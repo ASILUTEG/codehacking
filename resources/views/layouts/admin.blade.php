@@ -125,11 +125,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/users">All Users</a>
+                                <a href="http://127.0.0.1:8000/admin/user">All Users</a>
                             </li>
 
                             <li>
-                                <a href="/users/create">Create User</a>
+                                <a href="http://127.0.0.1:8000/admin/user/create">Create User</a>
                             </li>
 
                         </ul>

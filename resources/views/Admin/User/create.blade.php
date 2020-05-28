@@ -4,7 +4,7 @@
 <!-- form create user -->
 
 <p>{{$roles}}</p>
-{!! Form::open(['method' => 'post','action'=>'AdminUserController@store']) !!}
+{!! Form::open(['method' => 'post','action'=>'AdminUserController@store','enctype'=>'multipart/form-data']) !!}
 <div class='form-group'>
 {!! Form::label('name','Name:-') !!}
 {!! Form::text('name',null,['class'=>'form-control']) !!}
