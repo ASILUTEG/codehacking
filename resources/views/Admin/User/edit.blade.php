@@ -37,11 +37,18 @@
         </div>
 
         <div class='form-group'>
-            {!! Form::submit('Update user',['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Update user',['class'=>'btn btn-primary col-sm-6']) !!}
         </div>
 
-
         {!! Form::close() !!}
+
+        <!-- delete -->
+        {!! Form::open(['method' => 'DELETE','action'=>['AdminUserController@destroy',$user->id]]) !!}
+        <div class='form-group'>
+            {!! Form::submit('Delete user',['class'=>'btn btn-danger col-sm-6']) !!}
+        </div>
+        {!! Form::close() !!}
+
     </div>
 </div>
 @include('includes.form_error')

@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 @section('content')
 
+
+
 <h1>welcome to admin page</h1>
+
 <input type="button" value="go test your code">
 <table class="table">
   <thead class="thead-dark">

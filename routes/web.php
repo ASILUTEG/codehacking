@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/admin', function () {
-    return view('admin.index');
-}); 
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('Admin/user', 'AdminUserController');
+Route::group(['middleware' => 'Admin'], function ($id) {
+    Route::resource('Admin/user', 'AdminUserController');
+});
