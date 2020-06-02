@@ -1,10 +1,11 @@
 <?php
 
 namespace App;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','status','photo_id','role_id'
+        'name', 'email', 'password', 'status', 'photo_id', 'role_id'
     ];
 
     /**
@@ -33,6 +34,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function posts()
+    {
+        return $this->hasMany('App\posts');
+    }
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -46,11 +51,10 @@ class User extends Authenticatable
     }
     public function isAdmin()
     {
-     if($this->role->name=="Administrator"){
-         return true;
-     }else{
-         return false;
-     }
+        if ($this->role->name == "Administrator") {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }
