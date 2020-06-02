@@ -22,7 +22,7 @@
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</a></td>
             <td>{{$post->user->name}}</td>
-            <td>{{$post->catogery_id}}</td>
+            <td>{{$post->catogery ? $post->catogery->name :'uncatogrize'}}</td>
             <td><img height="25" src="{{$post->photo ? $post->photo->path : '/images/no.jpg'}}"></td>
             <td>{{$post->created_at->diffForHumans()}}</td>
             <td>{{$post->updated_at->diffForHumans()}}</td>

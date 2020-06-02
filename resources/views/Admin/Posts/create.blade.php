@@ -15,7 +15,7 @@
 </div>
 <div class='form-group'>
     {!! Form::label('catogery_id','catogery:-') !!}
-    {!! Form::select('catogery_id',['1','2','3'],null,['class'=>'form-control']) !!}
+    {!! Form::select('catogery_id',$catogery,null,['class'=>'form-control']) !!}
 </div>
 
 <div class='form-group'>

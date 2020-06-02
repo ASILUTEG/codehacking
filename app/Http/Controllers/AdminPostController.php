@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\catogery;
 use App\user;
 use App\role;
 use App\photo;
@@ -32,8 +33,8 @@ class AdminPostController extends Controller
     public function create()
     {
         //
-        // $users = User::pluck('name', 'id');
-        return view('Admin.posts.create');
+        $catogery = catogery::pluck('name', 'id');
+        return view('Admin.posts.create', compact('catogery'));
     }
 
     /**

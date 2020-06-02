@@ -16,4 +16,8 @@ class posts extends Model
     {
         return $this->belongsTo('App\photo');
     }
+    public function catogery()
+    {
+        return $this->belongsTo('App\catogery');
+    }
 }
