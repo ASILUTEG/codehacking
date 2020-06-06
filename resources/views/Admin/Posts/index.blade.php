@@ -19,9 +19,9 @@
         @foreach($posts as $post)
         <tr>
             <th scope="row">{{$post->id}}</th>
-            <td>{{$post->title}}</td>
+            <td><a href="/admin/post/{{$post->id}}/edit">{{$post->title}}</a></td>
             <td>{{$post->body}}</a></td>
-            <td>{{$post->user->name}}</td>
+            <td>{{$post->user ? $post->user->name:'User Deleted'}}</td>
             <td>{{$post->catogery ? $post->catogery->name :'uncatogrize'}}</td>
             <td><img height="25" src="{{$post->photo ? $post->photo->path : '/images/no.jpg'}}"></td>
             <td>{{$post->created_at->diffForHumans()}}</td>

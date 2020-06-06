@@ -491,6 +491,7 @@ class ComposerStaticInitf763f0adaab9c2fff6e9f9d0613eb8a6
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\PostsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PostsRequest.php',
         'App\\Http\\Requests\\UsersRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsersRequest.php',
+        'App\\Http\\Requests\\postEditeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/postEditeRequest.php',
         'App\\Http\\Requests\\requestUserEdit' => __DIR__ . '/../..' . '/app/Http/Requests/requestUserEdit.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

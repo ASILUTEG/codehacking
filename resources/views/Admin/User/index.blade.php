@@ -27,7 +27,7 @@
       <td><img height="50" src="{{$user->photo ? $user->photo->path : '/images/no.jpg'}}"></td>
       <td><a href="/Admin/user/{{$user->id}}/edit">{{$user->name}}</a></td>
       <td>{{$user->email}}</td>
-      <td>{{$user->role->name}}</td>
+      <td>{{$user->role ? $user->role->name : 'no role id'}}</td>
       <td>{{$user->status == 1 ? 'Active' : 'Not Active'}}</td>
       <td>{{$user->created_at->diffForHumans()}}</td>
       <td>{{$user->updated_at->diffForHumans()}}</td>

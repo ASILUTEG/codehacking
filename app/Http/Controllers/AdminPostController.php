@@ -9,6 +9,7 @@ use App\photo;
 use App\posts;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostsRequest;
+use App\Http\Requests\postEditeRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
@@ -80,7 +81,9 @@ class AdminPostController extends Controller
     public function edit($id)
     {
         //
-        return view('Admin.posts.edit');
+        $catogery = catogery::pluck('name', 'id');
+        $post = posts::findOrfail($id);
+        return view('Admin.posts.edit', compact('post', 'catogery'));
     }
 
     /**
@@ -90,9 +93,20 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(postEditeRequest $request, $id)
     {
-
+        $post = posts::findOrfail($id);
+        $input = $request->all();
+        if ($file = $request->file('photo_id')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['path' => $name]);
+            $input['photo_id'] = $photo->id;
+        }
+        // $users->posts()->create($input);
+        $post->update($input);
+        $posts = posts::all();
+        return view('Admin.posts.index', compact('posts'));
         //
 
     }
@@ -105,6 +119,11 @@ class AdminPostController extends Controller
      */
     public function destroy($id)
     {
+        $post = posts::findOrFail($id);
+        unlink(public_path() . $post->photo->path);
+        $post->delete();
+        $posts = posts::all();
+        return view('Admin.posts.index', compact('posts'));
         //
     }
 }
