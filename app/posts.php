@@ -20,4 +20,8 @@ class posts extends Model
     {
         return $this->belongsTo('App\catogery');
     }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'post_id', 'id');
+    }
 }

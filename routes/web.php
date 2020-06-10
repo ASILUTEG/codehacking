@@ -17,13 +17,16 @@ use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/post/{id}', 'AdminPostController@post');
 Auth::routes();
-
+Route::resource('admin/post/comments', 'PostCommentsController');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('admin/post/comment/replaies', 'commentreplaiesController');
 Route::group(['middleware' => 'Admin'], function ($id) {
     Route::resource('Admin/user', 'AdminUserController');
     Route::resource('admin/post', 'AdminPostController');
     Route::resource('admin/catogery', 'AdminCatogeryController');
     Route::resource('admin/media', 'AdminMediaController');
+
+    Route::resource('admin/post/comment/replaies', 'commentreplaiesController');
 });

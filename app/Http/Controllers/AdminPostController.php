@@ -37,6 +37,13 @@ class AdminPostController extends Controller
         $catogery = catogery::pluck('name', 'id');
         return view('Admin.posts.create', compact('catogery'));
     }
+    public function post($id)
+    {
+        $catogerys = catogery::pluck('name');
+        $post = posts::findOrfail($id);
+        $comments = $post->comments;
+        return view('post', compact('post', 'catogerys', 'comments'));
+    }
 
     /**
      * Store a newly created resource in storage.
