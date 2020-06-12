@@ -16,6 +16,7 @@ class CreateReplaysTable extends Migration
         Schema::create('replays', function (Blueprint $table) {
             $table->id();
             $table->integer('status')->default(0);
+            $table->integer('photo_id')->default(0);
             $table->string('Author');
             $table->string('email');
             $table->text('body');

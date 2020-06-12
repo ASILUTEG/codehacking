@@ -65,54 +65,55 @@
                     <small>{{$comment->created_at->diffForHumans()}}</small>
                 </h4>
                 <h3>comment is</h3>
-                <h3>{{$comment->body}}</h3>
-            </div>
-        </div>
-        @endforeach
-        @endif
-        <!-- Comment -->
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Start Bootstrap
-                    <small>August 25, 2014 at 9:30 PM</small>
-                </h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                <!-- Nested Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                <h4>{{$comment->body}}</h4>
+                </br>
+                <div class="well">
+                    <!-- replay section -->
+
+                    @if(count($comment->replays)>0)
+                    @foreach($comment->replays as $replay)
+                    <h4 class="media-heading">{{$replay->Author}}
+                        <small>{{$replay->created_at->diffForHumans()}}</small>
+                    </h4>
+                    <a>
+                        <img height="100" src="{{$replay->photo ? $comment->photo->path : '/images/no.jpg'}}" alt="">
                     </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Nested Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-                <!-- End Nested Comment -->
-            </div>
-        </div>
-
-
-        @stop
-
-
-
-
-        @section('catogery')
-
-        <h4>Blog Categories</h4>
-        <div class="row">
-            <div class="col-lg-6">
-                <ul class="list-unstyled">
-                    @foreach($catogerys as $gatogery)
-                    <li><a href="#">{{$gatogery}}</a></li>
+                    <h4>{{$replay->body}}</h4>
                     @endforeach
-                </ul>
-            </div>
-        </div>
+                    @endif
+                    {!! Form::open(['method' => 'POST','action'=>'commentreplaiesController@store','enctype'=>'multipart/form-data']) !!}
+                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                    <div class='form-group'>
+                        {!! Form::label('body','Reply:-') !!}
+                        {!! Form::text('body',null,['class'=>'form-control']) !!}
+                    </div>
+                    <div class='form-group'>
+                        {!! Form::submit('Submit',['class'=>'btn btn-primary']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                    @include('includes.form_error')
+                    <!-- end replay -->
+                </div>
 
-        @stop
+            </div>
+            @endforeach
+            @endif
+            @stop
+
+
+
+
+            @section('catogery')
+
+            <h4>Blog Categories</h4>
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                        @foreach($catogerys as $gatogery)
+                        <li><a href="#">{{$gatogery}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
+            @stop

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\catogery;
 use App\user;
 use App\role;
+use App\comment;
 use App\photo;
 use App\posts;
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ class AdminPostController extends Controller
         $catogery = catogery::pluck('name', 'id');
         return view('Admin.posts.create', compact('catogery'));
     }
+
+
     public function post($id)
     {
         $catogerys = catogery::pluck('name');
