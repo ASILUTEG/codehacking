@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/post/{id}', 'AdminPostController@post');
+Route::resource('/lesson', 'lessoncontroller');
 Auth::routes();
 Route::resource('admin/post/comments', 'PostCommentsController');
 Route::get('/home', 'HomeController@index')->name('home');
