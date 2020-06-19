@@ -482,6 +482,7 @@ class ComposerStaticInitf763f0adaab9c2fff6e9f9d0613eb8a6
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PostCommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostCommentsController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\ReviewController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReviewController.php',
         'App\\Http\\Controllers\\commentreplaiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/commentreplaiesController.php',
         'App\\Http\\Controllers\\lessoncontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/lessoncontroller.php',
         'App\\Http\\Controllers\\rolecontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/rolecontroller.php',
