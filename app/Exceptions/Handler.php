@@ -7,8 +7,10 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Throwable;
 
+
 class Handler extends ExceptionHandler
 {
+    use Exceptiontrait;
     /**
      * A list of the exception types that are not reported.
      *
@@ -52,16 +54,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-
-        if ($exception instanceof ModelNotFoundException) {
-
-            return response("product not found", 404);
-        }
-        if ($exception instanceof NotFoundHttpException) {
-
-            return response("Bad url", 403);
-        }
-        dd($exception);
-        return parent::render($request, $exception);
+        return  $this->apiException($request, $exception);
     }
 }
