@@ -549,6 +549,7 @@ class ComposerStaticInitf763f0adaab9c2fff6e9f9d0613eb8a6
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Exceptions\\Exceptiontrait' => __DIR__ . '/../..' . '/app/Exceptions/ExceptionTrait.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminCatogeryController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCatogeryController.php',
         'App\\Http\\Controllers\\AdminMediaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminMediaController.php',
@@ -579,6 +580,7 @@ class ComposerStaticInitf763f0adaab9c2fff6e9f9d0613eb8a6
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\PostsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PostsRequest.php',
+        'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
         'App\\Http\\Requests\\UsersRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsersRequest.php',
         'App\\Http\\Requests\\postEditeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/postEditeRequest.php',
         'App\\Http\\Requests\\requestUserEdit' => __DIR__ . '/../..' . '/app/Http/Requests/requestUserEdit.php',

@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 require_once 'vendor/autoload.php';
 
+use App\User;
 use App\Model\product;
 use Faker\Generator as Faker;
 
@@ -13,6 +14,8 @@ $factory->define(product::class, function (Faker $faker) {
         'price' => $faker->numberBetween(100, 5000),
         'stock' => $faker->randomDigit,
         'discount' => $faker->numberBetween(2, 30),
-
+        'user_id' => function () {
+            return  user::all()->random();
+        },
     ];
 });

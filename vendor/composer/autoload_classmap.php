@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Exceptions\\Exceptiontrait' => $baseDir . '/app/Exceptions/ExceptionTrait.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminCatogeryController' => $baseDir . '/app/Http/Controllers/AdminCatogeryController.php',
     'App\\Http\\Controllers\\AdminMediaController' => $baseDir . '/app/Http/Controllers/AdminMediaController.php',
@@ -37,6 +38,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\PostsRequest' => $baseDir . '/app/Http/Requests/PostsRequest.php',
+    'App\\Http\\Requests\\ProductRequest' => $baseDir . '/app/Http/Requests/ProductRequest.php',
     'App\\Http\\Requests\\UsersRequest' => $baseDir . '/app/Http/Requests/UsersRequest.php',
     'App\\Http\\Requests\\postEditeRequest' => $baseDir . '/app/Http/Requests/postEditeRequest.php',
     'App\\Http\\Requests\\requestUserEdit' => $baseDir . '/app/Http/Requests/requestUserEdit.php',
