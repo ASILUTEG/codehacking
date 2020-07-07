@@ -18,7 +18,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "nesbot/carbon": "^2.34"
+        "nesbot/carbon": "^2.34",
+        "stichoza/google-translate-php": "^4.1",
+        "tanmuhittin/laravel-google-translate": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

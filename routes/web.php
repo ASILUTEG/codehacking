@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +17,11 @@ use App\User;
 |
 */
 
+Route::get('/t', function () {
+    $pass = Str::random(12);
+    return $pass . '  ' . Hash::make($pass);
+    // return GoogleTranslate::trans('ali yasser ali', 'ar', 'en');
+});
 Route::get('/', function () {
     return view('welcome');
 });
