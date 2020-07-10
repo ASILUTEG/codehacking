@@ -21,7 +21,7 @@ class sysUsercollection extends JsonResource
             'yb' => $this->branch,
             'ye' => $this->esl_no,
             'yy' => $this->yearn,
-            'yr' => $this->report_id,
+            'yr' => $this->report,
 
         ];
     }

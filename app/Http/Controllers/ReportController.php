@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReportRequest;
+use Illuminate\Support\Str;
+use App\sysUser;
 use App\report;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +21,7 @@ class ReportController extends Controller
      */
     public function index()
     {
+        return report::all();
         //
     }
 
@@ -22,10 +30,6 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,6 +39,30 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
+        if (Str::upper($request->file('file')->getClientOriginalExtension()) == "PDF") {
+
+            $report = new report;
+            if ($file = $request->file('file')) {
+                $name = $request->file('file')->getClientOriginalName();
+                $sys_id = str_replace('.pdf', '', $name);
+                $sys_id = str_replace('.PDF', '', $name);
+                $rp = report::where('sys_id', $sys_id)->delete();
+                $file->move('PDF', $name);
+                $report['file'] = $name;
+                $report['sys_id'] = $sys_id;
+                $report->save();
+            }
+            return response([
+                'Succefull'
+            ]);
+        } else {
+            return response([
+                'error file type'
+            ]);
+        }
+
+
+
         //
     }
 
@@ -55,10 +83,6 @@ class ReportController extends Controller
      * @param  \App\report  $report
      * @return \Illuminate\Http\Response
      */
-    public function edit(report $report)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -67,19 +91,4 @@ class ReportController extends Controller
      * @param  \App\report  $report
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, report $report)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(report $report)
-    {
-        //
-    }
 }

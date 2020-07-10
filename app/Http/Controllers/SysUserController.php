@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\sysUserRequest;
 use App\Http\Resources\sysUsercollection;
 use App\sysUser;
+use App\report;
 use Illuminate\Http\Request;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Str;
@@ -14,7 +15,7 @@ class SysUserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except('index', 'show');
+        $this->middleware('auth:api')->except('index', 'show');;
     }
 
     /**
@@ -45,18 +46,21 @@ class SysUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(sysUserRequest $request)
     {
-
         $sysUser = new sysUser;
         $pass = Str::random(12);
         $user_name = str_replace(' ', '', GoogleTranslate::trans($request->yu, 'en', 'ar'));
+        $user_name = $user_name . $request->yy . $request->yb . $request->ye;
+        $ss = sysUser::where('user_name', $user_name)->get();
+        if (count($ss) > 0) {
+            $user_name = $user_name . Str::random(count($ss));
+        }
         $sysUser->user_name = $user_name;
         $sysUser->password =  Hash::make($pass);
         $sysUser->esl_no = $request->ye;
         $sysUser->yearn = $request->yy;
         $sysUser->branch = $request->yb;
-        $sysUser->report_id = 1;
         $sysUser->save();
         return response([
             'user_name' => $sysUser->user_name,
@@ -86,10 +90,6 @@ class SysUserController extends Controller
      * @param  \App\sysUser  $sysUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(sysUser $sysUser)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -98,10 +98,7 @@ class SysUserController extends Controller
      * @param  \App\sysUser  $sysUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, sysUser $sysUser)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
