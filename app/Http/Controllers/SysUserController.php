@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\Debugbar\Facade;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\sysUserRequest;
 use App\Http\Resources\sysUsercollection;
@@ -77,13 +79,30 @@ class SysUserController extends Controller
      * @param  \App\sysUser  $sysUser
      * @return \Illuminate\Http\Response
      */
-    public function show(sysUser $sysUser)
+    public function show(request $request, sysUser $sysUser)
     {
-
-        return new sysUsercollection($sysUser);
-        //
+        $ss =  sysUser::where('user_name', $request->User_name)->get()->first();
+        if (Hash::check($request->Password, $ss->password)) {
+            $filename  =  $ss->report->file;
+            $path = $filename;
+            
+            $contentType = mime_content_type($path);
+            return Response(file_get_contents($path), 200, [
+                'Content-Type' => $contentType,
+                'Content-Disposition' => 'inline; filename="' . $filename . '"'
+            ]);
+        }
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\sysUser  $sysUser
+     * @return \Illuminate\Http\Response
+     */
+    public function Show_Pdf(Request  $request)
+    {
+    }
     /**
      * Show the form for editing the specified resource.
      *

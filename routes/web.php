@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Barryvdh\Debugbar\Facade;
+use DebugBar\DebugBar;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Str;
 /*
@@ -25,6 +27,11 @@ Route::get('/t', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/res', function () {
+    Facade::info('loginuser');
+    return view('loginuser');
+});
+
 Route::get('/post/{id}', 'AdminPostController@post');
 Route::resource('/lesson', 'lessoncontroller');
 Auth::routes();
