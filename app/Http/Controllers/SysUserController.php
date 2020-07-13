@@ -81,11 +81,13 @@ class SysUserController extends Controller
      */
     public function show(request $request, sysUser $sysUser)
     {
+
+
         $ss =  sysUser::where('user_name', $request->User_name)->get()->first();
         if (Hash::check($request->Password, $ss->password)) {
             $filename  =  $ss->report->file;
             $path = $filename;
-            
+            // return $filename;
             $contentType = mime_content_type($path);
             return Response(file_get_contents($path), 200, [
                 'Content-Type' => $contentType,

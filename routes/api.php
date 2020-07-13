@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('/products', 'ProductController');
-
 Route::apiResource('/sysUser', 'SysUserController');
 Route::apiResource('/report', 'ReportController');
 Route::group(['prefix' => 'products'], function () {
